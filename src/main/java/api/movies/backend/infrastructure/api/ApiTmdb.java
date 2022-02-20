@@ -1,7 +1,6 @@
 package api.movies.backend.infrastructure.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -15,27 +14,27 @@ public class ApiTmdb {
         this.webClient = webClient;
     }
 
-    public String getMovie(String id) {
+    public MovieDto getMovie(String movieId) {
         return webClient.get()
-                .uri("movie/{movieId}", id)
+                .uri("movie/{movieId}", movieId)
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(MovieDto.class)
                 .block();
     }
 
-    public String getCredits(String id) {
+    public CreditsDto getCredits(String movieId) {
         return webClient.get()
-                .uri("movie/{movieId}/credits", id)
+                .uri("movie/{movieId}/credits", movieId)
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(CreditsDto.class)
                 .block();
     }
 
-    public String getPeople(String id) {
+    public PeopleDto getPeople(String peopleId) {
         return webClient.get()
-                .uri("person/{person_id}", id)
+                .uri("person/{person_id}", peopleId)
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(PeopleDto.class)
                 .block();
     }
 }
