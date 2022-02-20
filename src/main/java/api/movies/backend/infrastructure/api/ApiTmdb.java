@@ -1,5 +1,6 @@
 package api.movies.backend.infrastructure.api;
 
+import api.movies.backend.application.dto.MovieDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
