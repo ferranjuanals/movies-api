@@ -6,15 +6,18 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @Data
 @AllArgsConstructor
 public class Movie {
 
-    @NotBlank
-    private Integer tmdbId;
+    @NotNull
+    private Integer id;
 
     @NotBlank
     private String title;
@@ -22,10 +25,13 @@ public class Movie {
     @NotBlank
     private String description;
 
-    @NotEmpty
+    @NotNull
     private Double rating;
 
-    @NotEmpty
+    @NotNull
     private LocalDate releaseDate;
+
+    @NotEmpty
+    private List<Credit> credits;
 
 }
