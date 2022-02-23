@@ -1,5 +1,7 @@
 package api.movies.backend.infrastructure.api;
 
+import api.movies.backend.application.dto.TmdbCreditsDto;
+import api.movies.backend.application.dto.TmdbMovieDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,27 +16,20 @@ public class ApiTmdb {
         this.webClient = webClient;
     }
 
-    public MovieDto getMovie(String movieId) {
+    public TmdbMovieDto getMovie(String movieId) {
         return webClient.get()
                 .uri("movie/{movieId}", movieId)
                 .retrieve()
-                .bodyToMono(MovieDto.class)
+                .bodyToMono(TmdbMovieDto.class)
                 .block();
     }
 
-    public CreditsDto getCredits(String movieId) {
+    public TmdbCreditsDto getCredits(String movieId) {
         return webClient.get()
                 .uri("movie/{movieId}/credits", movieId)
                 .retrieve()
-                .bodyToMono(CreditsDto.class)
+                .bodyToMono(TmdbCreditsDto.class)
                 .block();
     }
-
-    public PeopleDto getPeople(String peopleId) {
-        return webClient.get()
-                .uri("person/{person_id}", peopleId)
-                .retrieve()
-                .bodyToMono(PeopleDto.class)
-                .block();
-    }
+    
 }
