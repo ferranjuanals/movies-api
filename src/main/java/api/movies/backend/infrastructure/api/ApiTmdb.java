@@ -31,5 +31,5 @@ public class ApiTmdb {
                 .bodyToMono(TmdbCreditsDto.class)
                 .block();
     }
-    
+
 }
