@@ -33,30 +33,6 @@ public class MovieRepository implements IMovieRepository {
         return mapMovieFromJpaMovie(jpaMovieRepository.save(jpaMovie));
     }
 
-    @Override
-    public Page<Movie> findAll(Pageable pageable) {
-        return jpaMovieRepository.findAll(pageable)
-                .map(this::mapMovieFromJpaMovie);
-    }
-
-    @Override
-    public Page<Movie> findAllByYear(List<LocalDate> daysOfYear, Pageable pageable) {
-        return jpaMovieRepository.findAllByReleaseDateBetween(daysOfYear.get(0), daysOfYear.get(1), pageable)
-                .map(this::mapMovieFromJpaMovie);
-    }
-
-    @Override
-    public Page<Movie> findAllByTitle(String string, Pageable pageable) {
-        return jpaMovieRepository.findAllByTitleContains(string, pageable)
-                .map(this::mapMovieFromJpaMovie);
-    }
-
-    @Override
-    public Page<Movie> findAllByYearAndTitle(List<LocalDate> daysOfYear, String string, Pageable pageable) {
-        return jpaMovieRepository.findAllByReleaseDateBetweenAndTitleContains(daysOfYear.get(0), daysOfYear.get(1), string, pageable)
-                .map(this::mapMovieFromJpaMovie);
-    }
-
     private JpaMovie mapJpaMovieFromMovie(Movie movie) {
         JpaMovie jpaMovie = JpaMovie.builder()
                 .id(movie.getId())
@@ -93,6 +69,30 @@ public class MovieRepository implements IMovieRepository {
                 .name(person.getName())
                 .knownFor(person.getKnownFor())
                 .build();
+    }
+
+    @Override
+    public Page<Movie> findAll(Pageable pageable) {
+        return jpaMovieRepository.findAll(pageable)
+                .map(this::mapMovieFromJpaMovie);
+    }
+
+    @Override
+    public Page<Movie> findAllByYear(List<LocalDate> daysOfYear, Pageable pageable) {
+        return jpaMovieRepository.findAllByReleaseDateBetween(daysOfYear.get(0), daysOfYear.get(1), pageable)
+                .map(this::mapMovieFromJpaMovie);
+    }
+
+    @Override
+    public Page<Movie> findAllByTitle(String string, Pageable pageable) {
+        return jpaMovieRepository.findAllByTitleContains(string, pageable)
+                .map(this::mapMovieFromJpaMovie);
+    }
+
+    @Override
+    public Page<Movie> findAllByYearAndTitle(List<LocalDate> daysOfYear, String string, Pageable pageable) {
+        return jpaMovieRepository.findAllByReleaseDateBetweenAndTitleContains(daysOfYear.get(0), daysOfYear.get(1), string, pageable)
+                .map(this::mapMovieFromJpaMovie);
     }
 
     private Movie mapMovieFromJpaMovie(JpaMovie jpaMovie) {
