@@ -1,6 +1,7 @@
 # movies-api
 
-To use the API, add a TMDb API key in the application.properties file.
+To use the API, open a new terminal in the project folder and run spring-boot.
+`mvn spring-boot:run`
 
 ## Add a movie
 
