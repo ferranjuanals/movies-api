@@ -13,20 +13,20 @@ Add a movie using the id from the TMDb.
 
 Find all movies saved. Filter by year or title to find specific movies.
 
-`[GET] /movies?page=:page&size=:size&year=:year&title=:title  
-page=[Integer] 
-size=[Integer] 
-year=[Integer] 
-title=[String]`
+`[GET] /movies?page=:page&size=:size&year=:year&title=:title`  
+`page=[Integer]`  
+`size=[Integer]`  
+`year=[Integer]`  
+`title=[String]`
 
 ## Find actors, directors and writers
 
 Find all the people who worked at the saved movies. Filter by job: actor, director or writer.
 
-`[GET] /people?page=:page&size=:size&job=:job
-page=[Integer]
-size=[Integer]
-job=[String]`
+`[GET] /people?page=:page&size=:size&job=:job`  
+`page=[Integer]`  
+`size=[Integer]`  
+`job=[String]`  
 
 ## Test
 
